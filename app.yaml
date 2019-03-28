@@ -3,4 +3,4 @@ env: flex
 
 # make sure to include code below
 beta_settings:
-    cloud_sql_instances: frontendcapstone-235815:us-central1:frontend-postgres
+    cloud_sql_instances: postgres://postgres:flowerpower@35.202.174.119:5432/postgres
