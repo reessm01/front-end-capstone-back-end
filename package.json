@@ -6,8 +6,6 @@
   "scripts": {
     "start": "node index.js",
     "watch": "nodemon",
-    "postinstall": "source .env; sequelize db:migrate --url $DATABASE_URL",
-    "resettables": "source .env; sequelize db:migrate:undo:all --url $DATABASE_URL",
     "heroku-prebuild": "npm install -g sequelize-cli"
   },
   "repository": {
