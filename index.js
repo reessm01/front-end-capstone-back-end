@@ -14,7 +14,7 @@ const { jwtOptions, authMiddleware } = require("./controllers/auth");
 
 const app = express()
 
-app.set("port", process.env.PORT || 3000)
+app.set("port", process.env.PORT || 4000)
 
 app.use(cors())
 app.use(morgan("tiny"))
@@ -27,6 +27,7 @@ passport.use(
   );
   app.use(passport.initialize())
 
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/auth", controllers.auth)
 app.use("/users", controllers.users)
 app.use("/messages", controllers.messages)

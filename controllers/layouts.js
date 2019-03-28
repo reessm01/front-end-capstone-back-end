@@ -1,26 +1,27 @@
 const express = require("express");
 const router = express.Router();
-const { layouts } = require("../models");
+const { Layouts } = require("../models");
 const { authMiddleware } = require("./auth");
 const Sequelize = require("sequelize");
 
 // create a layouts
-router.post("/layouts", authMiddleware, (req, res) => {
-    layouts.create({
-        layouts: req.body.layout,
+router.post("/", authMiddleware, (req, res) => {
+    Layouts.create({
+        layout: req.body.layout,
         userId: req.user.get("id")
     })
-        .then(layouts => res.json({ layouts }))
+        .then(layout => res.json({layout}))
         .catch(err => {
             if (err instanceof Sequelize.ValidationError) {
                 return res.status(400).send({ errors: err.errors });
             }
+            console.log(err)
             res.status(500).send();
         });
 });
 
 // read all layouts
-router.get("/layouts", (req, res) => {
+router.get("/", (req, res) => {
     layouts.findAll({
         include: [{}],
         limit: req.query.limit || 100,
