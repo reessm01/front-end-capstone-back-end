@@ -8,7 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      viewModel: {
+      userId: { 
+        type: Sequelize.INTEGER 
+      },
+      layout: {
         type: Sequelize.JSON
       },
       createdAt: {
