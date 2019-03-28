@@ -1,10 +1,11 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "Back end dependency for SE4 fronte end capstone project.",
+  "description": "Back end dependency for SE4 front end capstone project.",
   "main": "app.js",
   "scripts": {
     "start": "node index.js",
+    "watch": "nodemon",
     "install": "if [ -e .env ]; then source .env; fi && sequelize db:migrate --url $DATABASE_URL",
     "postinstall": "source .env; sequelize db:migrate --url $DATABASE_URL",
     "resettables": "source .env; sequelize db:migrate:undo:all --url $DATABASE_URL",
@@ -19,7 +20,6 @@
   "bugs": {
     "url": "https://gitlab.com/front-end-capstone-project/backend/issues"
   },
-  "homepage": "https://gitlab.com/front-end-capstone-project/backend#readme",
   "dependencies": {
     "bcrypt": "^2.0.1",
     "cors": "^2.8.4",
