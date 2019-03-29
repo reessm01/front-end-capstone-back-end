@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "watch": "nodemon",
-    "heroku-prebuild": "npm install -g sequelize-cli"
+    "heroku-prebuild": "npm install -g sequelize-cli",
+    "postinstall": "if [ -e .env ]; then source .env; fi && sequelize db:migrate --url $DATABASE_URL"
   },
   "repository": {
     "type": "git",
