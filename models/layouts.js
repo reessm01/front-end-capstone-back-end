@@ -2,14 +2,15 @@
 module.exports = (sequelize, DataTypes) => {
   const layouts = sequelize.define('layouts', {
     layout: {
+      id: DataTypes.Integer,
       type: DataTypes.JSON
     },
     userId: DataTypes.INTEGER,
-    createdAt: DataTypes.DATE
+    createdAt: DataTypes.DATE,
   }, {
     defaultScope:{
       attributes:{
-        exclude: ["createdAt", "id"]
+        exclude: ["createdAt"]
       }
     }
   });
