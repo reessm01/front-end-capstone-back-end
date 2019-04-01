@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: Kwitter
+  title: Frontend Capstone
   version: "1.0.0"
 servers:
   - url: http://localhost:4000
@@ -91,9 +91,23 @@ paths:
                     type: string
                   displayName:
                     type: string
+
   /layouts/:
+    get:
+      summary: "Get all layouts"
+      tags:
+        - Layouts
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
     post:
       summary: "Saves a layout"
+      tags:
+        - Layouts
       security:
         - bearerAuth: []
       requestBody:
@@ -105,6 +119,56 @@ paths:
               properties:
                 layout:
                   type: object
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+    
+      
+  /layouts/{id}:
+    get:
+      summary: Get a layout by UserId
+      tags:
+        - Layouts
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric UserId of the layout to get
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+    patch:
+      summary: Patch a layout by its id
+      tags:
+        - Layouts
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                layout:
+                  type: object
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric id of the layout to get
       responses:
         200:
           description: OK

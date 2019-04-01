@@ -10,7 +10,7 @@ router.post("/", authMiddleware, (req, res) => {
         layout: req.body.layout,
         userId: req.user.get("id")
     })
-        .then(layout => res.json({layout}))
+        .then(layout => res.json({ layout }))
         .catch(err => {
             if (err instanceof Sequelize.ValidationError) {
                 return res.status(400).send({ errors: err.errors });
@@ -22,8 +22,7 @@ router.post("/", authMiddleware, (req, res) => {
 
 // read all layouts
 router.get("/", (req, res) => {
-    layouts.findAll({
-        include: [{}],
+    Layouts.findAll({
         limit: req.query.limit || 100,
         offset: req.query.offset || 0,
         order: [["createdAt", "DESC"]]
@@ -32,17 +31,19 @@ router.get("/", (req, res) => {
 
 // read layouts by id
 router.get("/:id", (req, res) => {
-    layouts.findById(req.params.id, {})
-    .then(layouts => res.json({ layouts }));
+    Layouts.findAll({
+        where: { userId: req.params.id }
+    })
+        .then(layouts => res.json({ layouts }));
 });
 
 // update layouts by id
 router.patch("/:id", authMiddleware, (req, res) => {
-  layouts.update(req.body, {
-    where: {
-      id: req.params.id
-    }
-  }).then(layouts => res.json({ layouts }));
+    Layouts.update(req.body, {
+        where: {
+            id: req.params.id
+        }
+    }).then(layouts => res.json({ layouts }));
 });
 
 // // delete layouts
