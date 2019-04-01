@@ -26,7 +26,12 @@ router.get("/", (req, res) => {
         limit: req.query.limit || 100,
         offset: req.query.offset || 0,
         order: [["createdAt", "DESC"]]
-    }).then(layouts => res.json({ layouts }));
+    })
+    .then(layouts => res.json({ layouts }))
+    .catch(err=>{
+        console.log(err)
+        res.status(500).send({error:err})
+    });;
 });
 
 // read layouts by id
@@ -34,7 +39,11 @@ router.get("/:id", (req, res) => {
     Layouts.findAll({
         where: { userId: req.params.id }
     })
-        .then(layouts => res.json({ layouts }));
+        .then(layouts => res.json({ layouts }))
+        .catch(err=>{
+            console.log(err)
+            res.status(500).send({error:err})
+        });
 });
 
 // update layouts by id
@@ -43,7 +52,12 @@ router.patch("/:id", authMiddleware, (req, res) => {
         where: {
             id: req.params.id
         }
-    }).then(layouts => res.json({ layouts }));
+    })
+    .then(() => res.status(500).send())
+    .catch(err=>{
+        console.log(err)
+        res.status(500).send({error:err})
+    });
 });
 
 // // delete layouts
