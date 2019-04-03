@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       id: DataTypes.Integer,
       type: DataTypes.JSON
     },
+    name: DataTypes.STRING,
     userId: DataTypes.INTEGER,
     createdAt: DataTypes.DATE,
   }, {
