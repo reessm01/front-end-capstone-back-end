@@ -8,7 +8,8 @@ const Sequelize = require("sequelize");
 router.post("/", authMiddleware, (req, res) => {
     Layouts.create({
         layout: req.body.layout,
-        userId: req.user.get("id")
+        userId: req.user.get("id"),
+        name: req.body.name
     })
         .then(layout => res.json({ layout }))
         .catch(err => {
@@ -53,7 +54,7 @@ router.patch("/:id", authMiddleware, (req, res) => {
             id: req.params.id
         }
     })
-    .then(() => res.status(500).send())
+    .then(layout => res.json({ layout }))
     .catch(err=>{
         console.log(err)
         res.status(500).send({error:err})

@@ -11,7 +11,12 @@ module.exports = {
       userId: { 
         type: Sequelize.INTEGER 
       },
+      name:{
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       layout: {
+        allowNull: false,
         type: Sequelize.JSON
       },
       createdAt: {
