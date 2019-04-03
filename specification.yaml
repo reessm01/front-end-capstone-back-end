@@ -119,6 +119,8 @@ paths:
               properties:
                 layout:
                   type: object
+                name:
+                  type: string
       responses:
         200:
           description: OK
