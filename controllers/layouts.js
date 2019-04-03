@@ -53,7 +53,7 @@ router.patch("/:id", authMiddleware, (req, res) => {
             id: req.params.id
         }
     })
-    .then(() => res.status(500).send())
+    .then(layout => res.json({ layout }))
     .catch(err=>{
         console.log(err)
         res.status(500).send({error:err})
