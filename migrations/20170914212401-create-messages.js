@@ -1,23 +1,22 @@
-'use strict';
+"use strict";
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('layouts', {
+  up: function(queryInterface, Sequelize) {
+    return queryInterface.createTable("messages", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: { 
-        type: Sequelize.INTEGER 
-      },
-      name:{
-        allowNull: false,
+      text: {
         type: Sequelize.STRING
       },
-      layout: {
-        allowNull: false,
-        type: Sequelize.JSON
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "users",
+          key: "id"
+        }
       },
       createdAt: {
         allowNull: false,
@@ -29,7 +28,7 @@ module.exports = {
       }
     });
   },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('layouts');
+  down: function(queryInterface, Sequelize) {
+    return queryInterface.dropTable("messages");
   }
 };

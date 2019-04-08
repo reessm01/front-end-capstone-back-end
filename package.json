@@ -1,11 +1,13 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "Back end dependency for SE4 fronte end capstone project.",
+  "description": "Back end dependency for SE4 front end capstone project.",
   "main": "app.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "nodemon",
+    "heroku-prebuild": "npm install -g sequelize-cli",
+    "postinstall": "if [ -e .env ]; then source .env; fi && sequelize db:migrate --url $DATABASE_URL"
   },
   "repository": {
     "type": "git",
@@ -16,16 +18,24 @@
   "bugs": {
     "url": "https://gitlab.com/front-end-capstone-project/backend/issues"
   },
-  "homepage": "https://gitlab.com/front-end-capstone-project/backend#readme",
   "dependencies": {
-    "bcrypt": "^3.0.5",
-    "cors": "^2.8.5",
-    "express": "^4.16.4",
-    "jsonwebtoken": "^8.5.1",
-    "morgan": "^1.9.1",
+    "bcrypt": "^2.0.1",
+    "cors": "^2.8.4",
+    "dotenv-safe": "^6.0.0",
+    "express": "^4.15.4",
+    "jsonwebtoken": "^8.0.1",
+    "morgan": "^1.8.2",
     "multer": "^1.4.1",
     "passport": "^0.4.0",
-    "passport-jwt": "^4.0.0",
-    "sequelize": "^5.2.1"
+    "passport-jwt": "^3.0.0",
+    "pg": "^6.4.2",
+    "sequelize": "3.x",
+    "sequelize-cli": "^5.4.0",
+    "swagger-parser": "^5.0.5",
+    "swagger-ui-express": "^4.0.1",
+    "yamljs": "^0.3.0"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL"
   }
 }
