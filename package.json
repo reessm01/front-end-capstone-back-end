@@ -29,7 +29,7 @@
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.0",
     "pg": "^6.4.2",
-    "sequelize": "3.x",
+    "sequelize": "5.x",
     "sequelize-cli": "^5.4.0",
     "swagger-parser": "^5.0.5",
     "swagger-ui-express": "^4.0.1",
