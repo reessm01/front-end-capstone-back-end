@@ -19,7 +19,7 @@
     "url": "https://gitlab.com/front-end-capstone-project/backend/issues"
   },
   "dependencies": {
-    "bcrypt": "^2.0.1",
+    "bcrypt": "^5.0.0",
     "cors": "^2.8.4",
     "dotenv-safe": "^6.0.0",
     "express": "^4.15.4",
